@@ -62,7 +62,6 @@ function Start(){
     document.getElementById("DeleteCar").hidden = false;
     Timer();
     refreshScreen();
-    CheckLoop();
     }
 /** The Timer function puts itself in a loop delay of one second and decrements the time i set for the specific lvl.
  * it also checks to see if the time hits 0 so that it can stop the loop. the way i controll the loop is with the boolean active.
@@ -192,17 +191,7 @@ function Start(){
             }
 //this sifts through and changes the check loop array to match first array in the sense of catching people who try and add delete one area by checking first array.
 //for every slot in Firstarr that is full the check loop spot == 2 for every spot that == 0 the check loop gets 1. this is so once the spot hits zero the user cant delete from that spot anymore
-            function CheckLoop(){
-                for(var i = 0; i<CheckLoop.length; i++){
-                    for(var j = 0; j<CheckLoop[i].length; j++){
-                        if(FirstArr[i][j] == 0){
-                            CheckLoop[i][j] = 1;
-                        }else if(FirstArr[i][j] == 1){
-                            CheckLoop[i][j] == 2;
-                        }
-                    }
-                }
-            }
+   
 /**This is the function that does all the dirty work
  * this is so that i dont have a whole bunch of code in my time function but it also covers all three bases. so in the time loop if you pass the level or fail the user gets thrown into this 
  * function they either have passed the level and therefore this function gets everything ready for the next lvl visually wise. by changing the array to all ones so all spots are filled when
@@ -220,6 +209,15 @@ function Start(){
             for(var i = 0; i < FirstArr.length; i++){
                 for(var j = 0; j < FirstArr[i].length; j++){
                     FirstArr[i][j] = SecondArr[i][j];
+                }
+            }
+            for(var i = 0; i<CheckLoop.length; i++){
+                for(var j = 0; j<CheckLoop[i].length; j++){
+                    if(FirstArr[i][j] == 0){
+                        CheckLoop[i][j] = 1;
+                    }else if(FirstArr[i][j] == 1){
+                        CheckLoop[i][j] == 2;
+                    }
                 }
             }
     document.getElementById("Start").hidden = true;
@@ -241,6 +239,15 @@ function Start(){
             for(var i = 0; i < FirstArr.length; i++){
                 for(var j = 0; j < FirstArr[i].length; j++){
                     FirstArr[i][j] = SecondArr[i][j];
+                }
+            }
+            for(var i = 0; i<CheckLoop.length; i++){
+                for(var j = 0; j<CheckLoop[i].length; j++){
+                    if(FirstArr[i][j] == 0){
+                        CheckLoop[i][j] = 1;
+                    }else if(FirstArr[i][j] == 1){
+                        CheckLoop[i][j] == 2;
+                    }
                 }
             }
             Hide();
