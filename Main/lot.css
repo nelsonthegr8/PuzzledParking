@@ -1,16 +1,100 @@
 img {
-    height: 15%;
-    width: 15%;
+    height: 25%;
+    width: 25%;
+}
+
+#NavBar {
+    margin: auto;
+}
+
+#NavBar p{
+    float: left;
+    padding-left: 22%;
+}
+
+table {
+    background-image: url("Assets/black-road-texture_1160-806.jpg");
+    background-size: cover;
+}
+
+td {
+    color: white;
 }
 
 #GameWrapper {
-    background-image: url();
-    height: 50%;
-    width: 50%;
-    margin: auto;
+    height: 30%;
+    width: 40%;
+    padding-left: 28.9%;
 }
 
 .center{
    text-align: center;
 }
 
+#Buttons {
+    width: 60%;
+    height: 20%; 
+    margin: auto;
+}
+
+#LeftKeyPad {
+    float: left;
+    width: 30%;
+}
+
+#StartBtn {
+    padding-left: 10%; 
+    float: left;
+    width: 30%;
+}
+
+.Swole {
+    width: 40%;
+    background-image: url("Assets/metal-plate-texture-1.jpg");
+    background-size: cover;
+    color: white;
+}
+
+#RightKeyPad { 
+    float: left;
+    width: 30%;
+   
+}
+
+body {
+    background-image: url("Assets/need-for-speed.jpg");
+    background-size: cover;
+    background-repeat: no-repeat; 
+}
+
+#Start {
+color: red;
+background-color: orange;
+border-radius: 50%;
+}
+
+#NextLvl {
+color: blue;
+background-color: gold;
+border-radius: 30%;
+}
+
+#AddCar {
+color: white;
+background-color: blue;
+border-radius: 25%;
+}
+
+#DeleteCar {
+color: white;
+background-color: red;
+border-radius: 25%;
+}
+
+#audioLbl {
+margin-left: 35%; 
+}
+
+audio {
+   opacity: 0.4;
+}
