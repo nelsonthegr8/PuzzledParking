@@ -8,12 +8,24 @@
     <link rel="stylesheet" type="text/css" media="screen" href="lot.css" />
     <script src="PuzzledParking.js"></script>
 </head>
-<body>
+<body onload="Hide()">
     
-    <header></header>
+    <header>
+        <h1 style="text-align:center;">Puzzled Parking</h1>
+        <div id="audioLbl">
+            <p style="font-size: 23px;"><strong>If you want to some music while you play here you go!</strong></p>
+            <p><audio src="Assets/'NEED FOR SPEED' Position Music 1 Hour of Epic Racing Music Mix.mp3"controls loop></audio></p>
+        </div>
+    </header>
 
     <main>
 
+        <div id="NavBar">
+            <p id="ScoreLbl" style="color:white;"><placeholder>Score</placeholder></p>
+            <p id="TimeLbl" style="color:white;"><placeholder>Time</placeholder></p>
+            <p id="ScoreToGetLbl" style="color:white;"><placeholder>Score To Get</placeholder></p>
+        </div>
+<!-- This holds the game play area in a table i decided to do it this way because its uniform and easy to manage-->
         <div id="GameWrapper">
             <table>
                 <tr>
@@ -26,47 +38,71 @@
                 <!-- Row 1 in the table -->
                 <tr>
                         <td><p>R 1:</p></td>
-                        <td class="center"><p id="car1"><img src="car.png"></p></td>
-                        <td class="center"><p id="car2"><img src="car.png"></p></td>
-                        <td class="center"><p id="car3"><img src="car.png"></p></td>
-                        <td class="center"><p id="car4"><img src="car.png"></p></td>
+                        <td class="center"><p id="car1"><img src="Assets/car.png"></p></td>
+                        <td class="center"><p id="car2"><img src="Assets/car.png"></p></td>
+                        <td class="center"><p id="car3"><img src="Assets/car.png"></p></td>
+                        <td class="center"><p id="car4"><img src="Assets/car.png"></p></td>
                 </tr>
                 <!-- Row 2 in the table -->
                 <tr>
                         <td><p>R 2:</p></td>
-                        <td class="center"><p id="car5"><img src="car.png"></p></td>
-                        <td class="center"><p id="car6"><img src="car.png"></p></td>
-                        <td class="center"><p id="car7"><img src="car.png"></p></td>
-                        <td class="center"><p id="car8"><img src="car.png"></p></td>
+                        <td class="center"><p id="car5"><img src="Assets/car.png"></p></td>
+                        <td class="center"><p id="car6"><img src="Assets/car.png"></p></td>
+                        <td class="center"><p id="car7"><img src="Assets/car.png"></p></td>
+                        <td class="center"><p id="car8"><img src="Assets/car.png"></p></td>
                 </tr>
                         <!-- Row 3 in the table -->
                         <tr>
                                 <td><p>R 3:</p></td>
-                                <td class="center"><p id="car9"><img src="car.png"></p></td>
-                                <td class="center"><p id="car10"><img src="car.png"></p></td>
-                                <td class="center"><p id="car11"><img src="car.png"></p></td>
-                                <td class="center"><p id="car12"><img src="car.png"></p></td>
+                                <td class="center"><p id="car9"><img src="Assets/car.png"></p></td>
+                                <td class="center"><p id="car10"><img src="Assets/car.png"></p></td>
+                                <td class="center"><p id="car11"><img src="Assets/car.png"></p></td>
+                                <td class="center"><p id="car12"><img src="Assets/car.png"></p></td>
                         </tr>
                         <!-- Row 4 in the table -->
                         <tr>
                                 <td><p>R 4:</p></td>
-                                <td class="center"><p id="car13"><img src="car.png"></p></td>
-                                <td class="center"><p id="car14"><img src="car.png"></p></td>
-                                <td class="center"><p id="car15"><img src="car.png"></p></td>
-                                <td class="center"><p id="car16"><img src="car.png"></p></td>
+                                <td class="center"><p id="car13"><img src="Assets/car.png"></p></td>
+                                <td class="center"><p id="car14"><img src="Assets/car.png"></p></td>
+                                <td class="center"><p id="car15"><img src="Assets/car.png"></p></td>
+                                <td class="center"><p id="car16"><img src="Assets/car.png"></p></td>
                         </tr>
                             <!-- Row 5 in the table -->
                         <tr>
                                 <td><p>R 5:</p></td>
-                                <td class="center"><p id="car17"><img src="car.png"></p></td>
-                                <td class="center"><p id="car18"><img src="car.png"></p></td>
-                                <td class="center"><p id="car19"><img src="car.png"></p></td>
-                                <td class="center"><p id="car20"><img src="car.png"></p></td>
+                                <td class="center"><p id="car17"><img src="Assets/car.png"></p></td>
+                                <td class="center"><p id="car18"><img src="Assets/car.png"></p></td>
+                                <td class="center"><p id="car19"><img src="Assets/car.png"></p></td>
+                                <td class="center"><p id="car20"><img src="Assets/car.png"></p></td>
                         </tr>
                 </tr>
-                <button onclick="Start()">Click Me</button>
+                
             </table>
         </div>
+
+        <div id="Buttons">
+            <div id="LeftKeyPad">
+                <p style="color:white;">Row</p>
+                <button class="Swole" id="Row1" onclick="RowNum(0)">1</button>
+                <button class="Swole" id="Row2" onclick="RowNum(1)">2</button>
+                <button class="Swole" id="Row3" onclick="RowNum(2)">3</button>
+                <button class="Swole" id="Row4" onclick="RowNum(3)">4</button>
+                <button class="Swole" id="Row5" onclick="RowNum(4)">5</button>
+            </div>
+        <div id="StartBtn">
+            <p><button onclick="Start()" id="Start">Start</button></p>
+            <p><button id="NextLvl" onclick="Start()">Next LvL</button></p>
+            <p><button id="AddCar" onclick="addCar()">Add</button></p>
+            <p><button id="DeleteCar" onclick="removeCar()">Delete</button></p>
+        </div>
+        <div id="RightKeyPad">
+                <p style="color:white;">Column</p>
+                <button class="Swole" id="Col1" onclick="ColNum(0)">1</button>
+                <button class="Swole" id="Col2" onclick="ColNum(1)">2</button>
+                <button class="Swole" id="Col3" onclick="ColNum(2)">3</button>
+                <button class="Swole" id="Col4" onclick="ColNum(3)">4</button>
+        </div>
+    </div>
     </main>
 
     <footer></footer>
