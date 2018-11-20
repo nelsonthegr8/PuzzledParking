@@ -33,6 +33,12 @@ var CheckLoop = [
     [1,1,2,1],
     [2,1,1,2],
     [1,1,1,2]];
+var CheckLoop2 = [
+    [1,2,1,1],
+    [1,2,2,1],
+    [1,1,2,1],
+    [2,1,1,2],
+    [1,1,1,2]];
 var Time = [60,50,35,30];
 //I initialized the column and row as NaN so that they would not go through if the user does not press one of them and 
 //also helps me give the user dynamic feedback by letting them know which button they did not press when the click either add or delete.
@@ -69,17 +75,26 @@ function Start(){
  * if they pass they move on
 */
     function Timer(){
+
+        if(active && Time[lvl] > 0){
+            Time[lvl]--;
+            document.getElementById("TimeLbl").innerHTML = " "+Time[lvl];
+            setTimeout(Timer,1000);
+            }
+
         if(Time[lvl] == 0){
             active = false;
         }
 
         if(active && usrpts == lvlDeterminedPts[lvl] && Time[lvl] > 0 && lvl < 3){
             active = false;
-            lvl++;
             ResetForNewLvl();
+            lvl++;
             alert("Great Job! You Beat The Level! Get ready for LEVEl "+(lvl+1)+
             "! Press The Next Lvl button to continue!");
-        }else if(active && usrpts == lvlDeterminedPts[lvl] && Time[lvl] > 0 && lvl == 3){
+        } 
+        
+        if(active && usrpts == lvlDeterminedPts[lvl] && Time[lvl] > 0 && lvl == 3){
             alert("You Beat The GAME!! more levels coming soon! Thanks For Playing");
             document.getElementById("NextLvl").hidden = true;
             document.getElementById("AddCar").hidden = true;
@@ -103,11 +118,9 @@ function Start(){
             document.getElementById("TimeLbl").innerHTML = " For ";
             document.getElementById("ScoreToGetLbl").innerHTML = " Playing! ";
 //Below is what loops back through every one second the key is the setTimeout function
-        }else if(active && Time[lvl] > 0){
-        Time[lvl]--;
-        document.getElementById("TimeLbl").innerHTML = " "+Time[lvl];
-        setTimeout(Timer,1000);
-        }else if(active == false && usrpts != lvlDeterminedPts[lvl]){
+        } 
+        
+        if(Time[lvl] == 0 && usrpts != lvlDeterminedPts[lvl]){
             ResetForNewLvl();
             Hide();
             alert("Sorry You Ran out of time! Press Start and Try Again!");
@@ -129,7 +142,7 @@ function Start(){
             alert("Please Click a Column number");
         }else if(FirstArr[Row][Column] == 0 && CheckLoop[Row][Column] > 0){
             FirstArr[Row][Column] = 1;
-            CheckLoop[Row][Column]--;
+            CheckLoop[Row][Column] -= 1;
             usrpts += 2;
         }else if(FirstArr[Row][Column] == 1){
             alert("Spot filled -2 points");
@@ -152,7 +165,7 @@ function Start(){
                 alert("Please Click a Column number");
             }else if(FirstArr[Row][Column] == 1 && CheckLoop[Row][Column] > 0){
                 FirstArr[Row][Column] = 0;
-                CheckLoop[Row][Column]--;
+                CheckLoop[Row][Column]-= 1;
                 usrpts -= 1;
             }else if(FirstArr[Row][Column] == 0){
                 alert("Spot is already empty!");
@@ -198,7 +211,7 @@ function Start(){
  * the user looks at it untill they hit the nxtlvl button.
  */
     function ResetForNewLvl(){
-         if (Time[(lvl - 1)] > 0){
+         if (Time[lvl] > 0){
             usrpts = 0;
             for(var i = 0; i < FirstArr.length; i++){
                 for(var j = 0; j < FirstArr[i].length; j++){
@@ -211,13 +224,9 @@ function Start(){
                     FirstArr[i][j] = SecondArr[i][j];
                 }
             }
-            for(var i = 0; i<CheckLoop.length; i++){
-                for(var j = 0; j<CheckLoop[i].length; j++){
-                    if(FirstArr[i][j] == 0){
-                        CheckLoop[i][j] = 1;
-                    }else if(FirstArr[i][j] == 1){
-                        CheckLoop[i][j] == 2;
-                    }
+            for(var i = 0; i<FirstArr.length; i++){
+                for(var j = 0; j<FirstArr[i].length; j++){
+                    CheckLoop[i][j] = CheckLoop2[i][j];
                 }
             }
     document.getElementById("Start").hidden = true;
@@ -241,13 +250,9 @@ function Start(){
                     FirstArr[i][j] = SecondArr[i][j];
                 }
             }
-            for(var i = 0; i<CheckLoop.length; i++){
-                for(var j = 0; j<CheckLoop[i].length; j++){
-                    if(FirstArr[i][j] == 0){
-                        CheckLoop[i][j] = 1;
-                    }else if(FirstArr[i][j] == 1){
-                        CheckLoop[i][j] == 2;
-                    }
+            for(var i = 0; i<FirstArr.length; i++){
+                for(var j = 0; j<FirstArr[i].length; j++){
+                    CheckLoop[i][j] = CheckLoop2[i][j];
                 }
             }
             Hide();
